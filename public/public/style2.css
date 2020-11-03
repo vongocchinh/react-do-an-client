@@ -1,0 +1,251 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.cart-top{
+    height: 40px;
+    border-bottom: 1px solid #AAAAAA;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.container-main{
+    margin-left: 7%;
+    margin-right: 7%;
+}
+.cart-color-EF4339{
+    color: #EF4339;
+}
+.cart-dh-top{
+    font-size: 12px;
+    text-decoration: none;
+}
+.cart-table-container{
+    width: 100%;
+    height: auto;
+}
+.cart-table-container-main{
+    margin-top: 20px;
+}
+.cart-table-container-main table{
+    border-collapse: collapse;
+}
+.cart-table-container-main table tbody tr{
+    border-bottom: 1px solid #F0F0F0;
+    width: 100%;
+    height: auto;
+}
+
+.cart-table-container-main table tbody tr td{
+    width: 220px;
+    padding: 10px;
+ }
+.images-cart-table-row{
+    width: 70px;
+    height: 70px;
+}
+.cart-option-table{
+    text-align: center;
+}
+.tbody-images-row{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.cart-table-name-row{
+    width: 100%;
+    float: left;
+    font-size: 12px;
+}
+.cart-quantity{
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    border: 1px solid #EF4339;
+    outline: none;
+}
+.cart-button-add-table{
+    width: 30px;
+    height:42px;
+    outline: none;
+    border: none;
+    background-color: #EF4339;
+    color: white;
+    
+}
+.cart-button-add-table:hover{
+    cursor: pointer;
+}
+.cart-price{
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    color: #EF4339;
+}
+
+.cart-quantity-table{
+    display: flex;
+    justify-content: center;
+}
+.cart-option-table:hover{
+    color: #EF4339;
+    cursor: pointer;
+}
+.cart-button-dh-table{
+    display: flex;
+    justify-content: left;
+}
+.cart-button-submit-table{
+    
+    background-color: #EF4339;
+    color: white;
+    outline: none;
+    border:none;
+    margin-right: 5px;
+    padding: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+.cart-button-submit-table:hover{
+    cursor: pointer;
+}
+
+.totalPriceCart{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    height: 35px;
+}
+.totalPriceCart p{
+    color: #EF4339;
+}
+.totalPriceCart p > strong{
+    color: black;
+    
+}
+
+
+
+@media screen and (max-width:990px){
+    .container-main{
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+    /* .tbody-images-row{
+
+    } */
+}
+
+@media screen and (max-width:850px){
+    .cart-quantity{
+        width: 35px;
+        height: 30px;
+        text-align: center;
+        border: 1px solid #EF4339;
+        outline: none;
+    }
+    .cart-button-add-table{
+        width: 30px;
+        height:32px;
+        outline: none;
+        border: none;
+        background-color: #EF4339;
+        color: white;
+        
+    }
+}
+@media screen and (max-width:610px){
+    .container-main{
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+    .cart-dh-top{
+        padding-left: 10px;
+    }
+    .cart-table-container h3{
+       padding-left: 10px;
+   }
+
+  
+.cart-button-dh-table{
+    display: block;
+    
+}
+.cart-button-submit-table{
+    
+    background-color: #EF4339;
+    color: white;
+    outline: none;
+    border:none;
+    padding-top: 10px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    width: 96%;
+    float: left;
+    margin-bottom: 10px;
+    margin-left: 2%;
+    margin-right: 2%;
+    text-align: center;
+}
+.totalPriceCart{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 96%;
+    height: 35px;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+}
+@media screen and (max-width:500px){
+    .cart-quantity{
+        width: 25px;
+        height: 20px;
+        text-align: center;
+        border: 1px solid #EF4339;
+        outline: none;
+    }
+    .cart-button-add-table{
+        width: 20px;
+        height:22px;
+        outline: none;
+        border: none;
+        background-color: #EF4339;
+        color: white;
+        
+    }
+    .cart-table-container-main table tbody tr td{
+        width: 150px;
+        padding: 5px;
+     }
+}
+@media screen and (max-width:350px){
+    .cart-quantity{
+        width: 17px;
+        height: 12px;
+        text-align: center;
+        border: 1px solid #EF4339;
+        outline: none;
+        margin-top: 0px;
+    }
+    .cart-button-add-table{
+        width: 12px;
+        height:14px;
+        outline: none;
+        border: none;
+        background-color: #EF4339;
+        color: white;
+        
+        
+    }
+    .cart-table-container-main table tbody tr td{
+        width: 100px;
+        padding: 5px;
+     }
+}

@@ -1,0 +1,5 @@
+export const ADD_REVIEW="ADD_REVIEW";
+
+export const REVIEW_IN="REVIEW_IN";
+export const REVIEW_SUCCESS="REVIEW_SUCCESS";
+export const REVIEW_ERROR="REVIEW_ERROR";

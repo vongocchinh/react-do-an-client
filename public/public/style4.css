@@ -1,0 +1,189 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.user-container-layout{
+    width: 76%;
+    height: auto;
+    margin-left: 12%;
+    margin-right: 12%;
+}
+.user-container{
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.user-container-main{
+    width: 32%;
+    height: 240px;
+    background-color: #FAFAFA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.user-container-main-detail{
+    width: 80%;
+    height: 80%;
+}
+.user-container-title{
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+.user-container-detail-user{
+    font-size: 12px;
+    padding-bottom: 7px;
+    margin-left: 5px;
+    width: 90%;
+}
+.user-container-title a{
+    font-size: 12px;
+    color: #0078D7;
+}
+.user-container-detail-user ins{
+    font-size: 12px;
+}
+.user-container-detail-user ins:hover{
+    cursor: pointer;
+    color: #0078D7;
+}
+.user-container-detail-user-default{
+    font-size: 12px;
+    padding-bottom: 5px;
+}
+.edit-user-container-name{
+    border: 1px solid #DDDDDD;
+    height: 30px;
+    width: 100%;
+    margin-bottom: 20px;
+    outline: none;
+    padding-left: 5px;
+    margin-bottom: 10px;
+}
+.edit-user-container-name:focus{
+    border: 2px solid #FF0303;
+}
+.edit-user-container-main-detail{
+    width: 80%;
+    height: 80%;
+}
+select.edit-user-container-name{
+    width: 102%;
+    height: 32px;
+}
+.edit-user-container-name-submit{
+    background-color: #FF0303;
+    color: white;
+    width: 103%;
+}
+@media screen and (max-width:1224px){
+    .user-container-layout{
+        width: 76%;
+        height: auto;
+        margin-left: 12%;
+        margin-right: 12%;
+    }
+}
+@media screen and (max-width:990px){
+    .user-container-layout{
+        width: 86%;
+        height: auto;
+        margin-left: 7%;
+        margin-right: 7%;
+    }
+}
+@media screen and (max-width:800px){
+    .user-container-layout{
+        width: 86%;
+        height: auto;
+        margin-left: 7%;
+        margin-right: 7%;
+    }
+    
+}
+@media screen and (max-width:700px){
+    .user-container-layout{
+        width: 96%;
+        height: auto;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+    .user-container{
+        width: 100%;
+        height: auto;
+        display: block;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: -20px;
+    }
+    .user-container-main{
+        width: 98%;
+        float: left;
+        height: auto;
+        background-color: #EFEFEF;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 2%;
+    }
+    .user-container-main-detail .hidden{
+        display: none;
+    }
+    .user-container-main-detail{
+        width: 100%;
+        height: 100%;
+    }
+    .edit-user-container-name{
+        border: 1px solid #DDDDDD;
+        height: 30px;
+        width: 98%;
+        margin-bottom: 20px;
+        outline: none;
+        padding-left: 2%;
+        margin-bottom: 10px;
+    }
+    select.edit-user-container-name{
+        width: 100%;
+        height: 32px;
+    }
+    .edit-user-container-name-submit{
+        background-color: #FF0303;
+        color: white;
+        width: 100.5%;
+        height: 35px;
+    }
+}
+@media screen and (max-width:450px){
+    .user-container-layout{
+        width: 100%;
+        height: auto;
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+    .edit-user-container-main-detail{
+        width: 100%;
+        height: 100%;
+    }
+    .edit-user-container-name{
+        border: 1px solid #DDDDDD;
+        height: 25px;
+        width: 92%;
+        margin-bottom: 20px;
+        outline: none;
+        padding-left: 4%;
+        margin-bottom: 10px;
+    }
+    select.edit-user-container-name{
+        width: 96%;
+        height: 30px;
+    }
+    .edit-user-container-name-submit{
+        background-color: #FF0303;
+        color: white;
+        width: 96.5%;
+        height: 35px;
+    }
+}
