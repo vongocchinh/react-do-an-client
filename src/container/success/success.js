@@ -4,16 +4,13 @@ import Success from './../../components/success/success';
 
 class success extends Component {
     render() {
-        
 
         return (
             <Success/>
         )
     }
     componentDidMount(){
-        
-       
-       
+        document.title="Thành công..."
     }
 }
 

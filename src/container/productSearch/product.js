@@ -5,43 +5,36 @@ import { connect } from 'react-redux';
 import * as action from './../../actions/search';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
-import ProductSearchItem from './../../components/productSearch/productItem';
+import ProductItem from '../../components/productSearch/productItem';
+
  class product extends Component {
     render() {
-        var {Search,ProductStore}=this.props;
-        console.log(Search);
+        var {Search}=this.props;
+        if(Search.redirect){
+            window.location.reload();
+        }
         return (
             <ProductSearch 
-                showSearch={this.onSearch(ProductStore,Search.name)}
+            search={this.show(Search.arr)}
             />
         )
     }
-    onSearch=(DATA,names)=>{
+    show=(data)=>{
+
         var result=null;
-        var dataProductSearch=null;
-        if(DATA){
-           setTimeout(() => {
-            dataProductSearch=DATA.slice().filter((data)=>{
-                console.log((data+"-----"+names));
-                return data.name.toString().toLowerCase().indexOf(names.toString().toLowerCase()) > -1;
-            });
-            result=dataProductSearch.map((data,key)=>{
-                return <ProductSearchItem 
-                data={data}
-                key={key} />
-            })
-           }, 5000);
-        }else{
-            return <p className="loading">Loading...</p>
-        }
+        result=data.map((arr,key)=>{
+            if(arr.data.statusProduct===true){
+                return <ProductItem 
+                product={arr}
+                key={key}
+            />
+            }
+
+        })
         return result;
     }
-    UNSAFE_componentWillMount(){
-        this.onWillSearch();
-        
-    }
-    onWillSearch=()=>{
-        this.props.onWillSearch();
+    componentDidMount(){
+        this.props.getProductSearch();
     }
 }
     const mapStateToProps=(state)=>{
@@ -52,8 +45,8 @@ import ProductSearchItem from './../../components/productSearch/productItem';
     }
     const dispatchToProps=(dispatch,props)=>{
         return{
-            onWillSearch:()=>{
-                dispatch(action.Success_Search());
+            getProductSearch:()=>{
+                dispatch(action.getProductSearch());
             }
         }
     }

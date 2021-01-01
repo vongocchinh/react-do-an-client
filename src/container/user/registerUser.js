@@ -3,15 +3,18 @@ import Register from './../../components/login/register';
 import { connect } from 'react-redux';
 import * as action from './../../actions/user';
 import { Redirect } from 'react-router-dom';
+import { toast } from 'react-toastify';
  class registerUser extends Component {
     render() {
         var {RegisterRequest}=this.props;
         if(RegisterRequest.isRegisterSuccess){
+            setTimeout(() => {
+                this.props.resetRegister();
+            }, 2000);
+            toast.dark("Đăng kí thành công");
             return <Redirect to="/loginPage" />
         }
-        setTimeout(() => {
-            this.props.resetRegister();
-        }, 2000);
+        
         return (
             
                 <Register

@@ -16,44 +16,40 @@ import TotalCart from '../../container/totalCart';
         }
     }
     componentDidMount(){
-        
         if(this.state.redirect === null){
            this.setState({
                redirectAdmin:true
            });
-      
         }
     }
     logoutUser=()=>{
         this.props.logoutUser();
     }
     showLogin=(user)=>{
-        
-       
-        if(user.userOnline===true){
-            return (<>
-                <a href="###" onClick={this.logoutUser} id="menu-a" className="menu-in-table">Đăng Xuất</a> <hr/>
+        // if(user.userOnline===true){
+        //     return (<>
+        //         <a href="###" onClick={this.logoutUser} id="menu-a" className="menu-in-table">Đăng Xuất</a> <hr/>
 
-            </>)
-        }
-        if(user.userOffline){
-            return  (<>
-                <Link to="/loginPage" id="menu-a"  className="menu-in-table">Đăng Nhập</Link> <hr/>
-            </>)
-        }
+        //     </>)
+        // }
+        // if(user.userOffline){
+        //     return  (<>
+        //         <Link to="/loginPage" id="menu-a"  className="menu-in-table">Đăng Nhập</Link> <hr/>
+        //     </>)
+        // }
     }
     showLoginWeb=(user)=>{
-        if(user.userOnline===true){
-            return (<>
-                
-                 <a href="###" onClick={this.logoutUser} className="menu-user" ><i className='fas fa-user-lock'></i>&nbsp;&nbsp;Đăng Xuất</a>           
-
-                 </>)
+        if(user){
+            if(user.idUser){
+                return (<>
+                     <a href="###" onClick={this.logoutUser} className="menu-user" ><i className='fas fa-user-lock'></i>&nbsp;&nbsp;Đăng Xuất</a>           
+                     </>)
+            }
         }
-        if(user.userOffline){
-            return  (<>
-                <Link to="/loginPage" className="menu-user" ><i className='fas fa-user-check'></i>&nbsp;&nbsp;Đăng nhập</Link>
-            </>)
+        if(!user){
+                return  (<>
+                    <Link to="/loginPage" className="menu-user" ><i className='fas fa-user-check'></i>&nbsp;&nbsp;Đăng nhập</Link>
+                </>)
         }
     }
     openMenu=()=>{
@@ -63,7 +59,9 @@ import TotalCart from '../../container/totalCart';
         document.getElementById('menu').style.width="0px";
     }
     render() {
-       var UserOnline=this.props.UserOnline;
+    //    var UserOnline=this.props.UserOnline;
+        var userLocalStorage=JSON.parse(localStorage.getItem('user'));
+    //    var {User}=this.props;
         return (
             <div>
                 <div className="banner-top">
@@ -97,7 +95,7 @@ import TotalCart from '../../container/totalCart';
                             <div className="hotline user-menu-table"><i className="fas fa-user-alt" />&nbsp;&nbsp;<strong>Tài Khoản</strong>
                                 <div className="table-user">
                                     <Link to="/user" className="menu-user" ><i className='far fa-smile'></i>&nbsp;&nbsp;Tài Khoản</Link>
-                                    {this.showLoginWeb(UserOnline)}
+                                    {this.showLoginWeb(userLocalStorage)}
                                 </div>
                             </div>
                             <p className="hotline"><TotalCart/><Link to="/cart"   className="a-link-cart"><i className="fas fa-shopping-cart" />&nbsp;&nbsp;<strong>Giỏ Hàng</strong></Link></p>
@@ -106,8 +104,7 @@ import TotalCart from '../../container/totalCart';
                     <div className="nav-menu" id="menu">
                         <span  onClick={this.offMenu} className="off-menu">x</span>
                         <div className="menu-slide">
-                           
-                        {this.showLogin(UserOnline)}
+                        {this.showLogin(userLocalStorage)}
                             <Link to="/user" id="menu-a" href="###" className="menu-in-table">Tài khoản</Link>
                         <hr />
                         <Link to="/" id="menu-a" href="/" className="menu-in-table">Trang Chủ</Link>
@@ -125,7 +122,6 @@ import TotalCart from '../../container/totalCart';
             </div>
         )
     }
-   
 }
 
 export default (connect(null,null))(header);

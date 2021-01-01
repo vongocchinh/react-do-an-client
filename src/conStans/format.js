@@ -2,11 +2,13 @@ export const format_currency=(price)=>{
     return price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
 }
 export const priceSale=(price,priceSale)=>{
+    var tong=0;
     if(priceSale===0){
         return price;
     }else{
-        return (price-(price/priceSale));
+        tong+=(price-(price*(priceSale/100)));
     }
+    return tong;
 }
 export const to_slug=(str)=>
 {
@@ -25,7 +27,7 @@ export const to_slug=(str)=>
     return str;
 }
 export const status=(status)=>{
-    if(status){
+    if(status>0){
         return "Còn hàng"
     }else{
         return "Hết hàng"
@@ -46,7 +48,7 @@ export const totalCartPrice=(cart)=>{
             result+=cart[i].quantity*(cart[i].cartProduct.price);
 
         }else
-        result+=cart[i].quantity*(cart[i].cartProduct.price-(cart[i].cartProduct.price/cart[i].cartProduct.priceSale));
+        result+=cart[i].quantity*(cart[i].cartProduct.price-(cart[i].cartProduct.price*cart[i].cartProduct.priceSale/100));
     }
     return result;
 }
@@ -55,7 +57,7 @@ export const totalCartPriceItem=(price,priceSale,quantity)=>{
     if(priceSale===0){
         result=price*quantity;
     }else{
-        result=(price-(price/priceSale))*quantity;
+        result=(price-(price*(priceSale/100)))*quantity;
     }
     return result;
 }

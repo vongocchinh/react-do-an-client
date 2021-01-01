@@ -3,41 +3,33 @@ import Header from '../../components/layout/header';
 import { connect } from 'react-redux';
 import * as actions from './../../actions/search';
 import { Redirect } from 'react-router-dom';
-import { to_slug } from './../../conStans/format';
+// import { to_slug } from './../../conStans/format';
 import * as actionUser from './../../actions/user';
-// import  Dialog  from '@material-ui/core/Dialog';
-// import  DialogContent  from '@material-ui/core/DialogContent';
-// import  CircularProgress  from '@material-ui/core/CircularProgress';
+import { toast } from 'react-toastify';
+import * as actionViewPage from '../../actions/viewPage';
+import * as actionCheckout from '../../actions/checkout';
 class header extends Component {
     render() {
-        var {redirect,name}=this.props.Search;
-        var {UserOnlineState}=this.props;
-        var {LogoutStore}=this.props;
-        if(LogoutStore.isLoggingOut){
-            // return <Dialog open={LogoutStore.isLoggingOut}  aria-labelledby="form-dialog-title">
-            //             <DialogContent style={{display:"flex",justifyContent:"center"}}>
-            //                 <CircularProgress color="secondary" />
-            //             </DialogContent>
-            //         </Dialog>
-            window.location.reload();
+        
+        var {redirect}=this.props.Search;
+        if(redirect===true){
+            return <Redirect to={"/product-search"} />
         }
-        // if(LogoutStore.isVerifying){
-        //     return <Redirect to="/loginPage" />
-        // }
+        var {UserOnlineState,User}=this.props;
+        var {LogoutStore}=this.props;
+        if(LogoutStore.isVerifying){
+            window.location.reload();
+            toast.dark("Đăng xuất thành công")
+        }
         if(LogoutStore.logoutError){
             return <Redirect to="/user" />
-        }
-        setTimeout(() => {
-            this.props.UserOnline();
-        }, 0);
-        if(redirect){
-            return <Redirect to={"/search-product/"+to_slug(name)+".html"} />
         }
         return (
             <Header 
                 search={this.onSearch}
                 UserOnline={UserOnlineState}
                 logoutUser={this.logoutUser}
+                User={User}
             />
         )
     }
@@ -49,6 +41,16 @@ class header extends Component {
     }
     componentDidMount(){
         this.props.getUser();
+        if(window.closed){
+            localStorage.removeItem('viewIdPage');
+        }
+        window.addEventListener('beforeunload',()=>{
+            localStorage.removeItem('viewIdPage');
+        })
+        var user=JSON.parse(localStorage.getItem('user'));
+        if(user){
+            this.props.getAddressBill(user.idUser);
+        }
     }
 }
 const dispatchToProps=(dispatch,props)=>{
@@ -60,10 +62,16 @@ const dispatchToProps=(dispatch,props)=>{
             dispatch(actionUser.getUserOnLine());
         },
         getUser:()=>{
-            dispatch(actionUser.USER_GET());
+            dispatch(actionUser.Get_User());
         },
         logoutUser:()=>{
             dispatch(actionUser.LOGOUT_USER_REQUEST());
+        },
+        counterViewPage:()=>{
+            dispatch(actionViewPage.counterViewPage());
+        },
+        getAddressBill:(id)=>{
+            dispatch(actionCheckout.getAddressBill(id));
         }
     }
 }
@@ -71,7 +79,8 @@ const mapStateToProps=(state)=>{
     return{
         Search:state.Search,
         UserOnlineState:state.UserOnline,
-        LogoutStore:state.LoginRequest
+        LogoutStore:state.LoginRequest,
+        User:state.User
     }
 }
 export default 

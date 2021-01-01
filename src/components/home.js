@@ -46,8 +46,7 @@ export default class home extends Component {
                 <hr />
                 </div>
                 <div className="clear" />
-                
-               
+
                 <br/>
                     <div className="container-main1">
                         <div className="category-product">
@@ -67,7 +66,7 @@ export default class home extends Component {
                             {this.props.showDataProduct}
                         </div>
                     </div>
-                    
+
                     <div className="container-main">
                         <div className="images-banner">
                             <img alt="aasa" className="images-banner-main" src={BGBanner} />

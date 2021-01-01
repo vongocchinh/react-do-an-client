@@ -8,18 +8,13 @@ import {toast} from 'react-toastify';
 class password extends Component {
     render() {
         var {MessageResetPassWord}=this.props;
-       
         if(MessageResetPassWord.isResetPasswordSuccess){
             toast.success('Check Pass Success !!! ');
             return <Redirect to="/loginPage" />
         }
         if(MessageResetPassWord.isResetPasswordError){
             toast.error('Check Pass Failed .vui lòng nhập lại tên tài khoản !!!');
-            
         }
-        setTimeout(() => {
-            this.props.resetMessagePassword();
-        }, 2000);
         return (
             <Password
                 resetPassword={this.resetPassword}
@@ -27,9 +22,11 @@ class password extends Component {
             />
         )
     }
-    
     resetPassword=(email)=>{
         this.props.resetPassword(email);
+    }
+    componentDidMount(){
+        document.title="Reset password ..."
     }
 }
 const mapStateToProps=(state)=>{

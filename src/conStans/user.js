@@ -41,3 +41,7 @@ export const Reset_Password_Success='Reset_Password_Success';
 export const Reset_Password_In='Reset_Password_In';
 export const Reset_Password_Error='Reset_Password_Error';
 export const Reset_Message_Password='Reset_Message_Password';
+
+
+
+export const GET_USER_ACCOUNT="GET_USER_ACCOUNT";

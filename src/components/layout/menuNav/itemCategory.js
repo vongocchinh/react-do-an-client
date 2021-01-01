@@ -7,7 +7,6 @@ export default class itemCategory extends Component {
         return (
             <>
                     <Link to={"/category/"+Format.to_slug(category.categoryName)+"/2"} className="menu-item-category" >{category.categoryName}</Link>
-                     
             </>
         )
     }

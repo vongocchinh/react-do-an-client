@@ -5,3 +5,4 @@ export const CHECKOUT_FAIL='CHECKOUT_FAIL';
 export const CHECKOUT_Reset='CHECKOUT_Reset';
 
 
+export const GetAddressBill='GetAddressBill';

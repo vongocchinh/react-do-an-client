@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import React, { Component } from 'react'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Dialog from '@material-ui/core/Dialog';
@@ -5,6 +6,12 @@ import  DialogContent  from '@material-ui/core/DialogContent';
 import Alert from '@material-ui/lab/Alert';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+function FormError(props) {
+    if (props.isHidden===false) { return null;}
+
+    return ( <div className="input-error-message">{props.errorMessage}</div>)
+}
  class loginFrom extends Component {
     constructor(props) {
         super(props);
@@ -14,7 +21,12 @@ import { Link } from 'react-router-dom';
             redirectLogin:false,
             circularProgressInLogging:this.props.isLoggingIn,
             circularProgressSuccess:this.props.isLoggingSuccess,
-            circularProgressLoginFail:false
+            circularProgressLoginFail:false,
+            errEmail:{
+                emailError:false,
+                isInputValidEmail:false,
+                errorMessageEmail:''
+            }
         }
     }
     onChange=(event)=>{
@@ -29,7 +41,11 @@ import { Link } from 'react-router-dom';
             userEmail,
             passWord
         }
-        this.props.login(login);
+        if(this.state.errEmail.emailError===false){
+            this.props.login(login);
+        }else{
+            toast.dark("Email không hợp lệ.")
+        }
         event.target.reset();
     }
     handleCloseCircularProgressLoginFail=()=>{
@@ -40,8 +56,34 @@ import { Link } from 'react-router-dom';
     ResetPass=()=>{
         this.props.ResetPass();
     }
+    validateInputEmail = (checkingText) => {
+        const regexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const checkingResult = regexp.exec(checkingText);
+        console.log(checkingResult);
+        if (checkingResult !== null) {
+            return { isInputValid: false,
+                    errorMessage: '',
+                     emailError:false
+                    };
+        } else {
+            return { isInputValid: true,
+                    errorMessage: 'Địa chỉ email không hợp lệ.',
+                     emailError:true
+                    };
+        }
+    }
+    handleInputValidationEmail = event => {
+        const { isInputValid, errorMessage,emailError } = this.validateInputEmail(this.state.userEmail);
+        this.setState({
+            errEmail:{
+                isInputValidEmail: isInputValid,
+                errorMessageEmail: errorMessage,
+                emailError:emailError
+            }
+        })
+    }
     render() {
-        
+        var {errEmail}=this.state;
         return (
             <>
             <Dialog open={this.props.isLoggingIn} onClose={this.handleCloseCircularProgressSuccess} aria-labelledby="form-dialog-title">
@@ -53,16 +95,25 @@ import { Link } from 'react-router-dom';
                         <form onSubmit={this.onSubmit}>
                         <div className="container-main-form-left">
                             <div className="container-main-form-left-input">
-                           
-                            {this.props.loginError ?  <Alert severity="error">This is logging error  — check in passWord and mail!</Alert>:''}
+
+                            {this.props.loginError ?  <Alert severity="error">Đăng nhập thất bại!</Alert>:''}
                             <p className="login-title-from">UserEmail :</p>
-                                <input type="text" placeholder="UserName/Email/NumberPhone" required name="userEmail" onChange={this.onChange} className="login-container-form-left" />
+                                <input type="text" 
+                                placeholder="Email..." 
+                                required name="userEmail" 
+                                onChange={this.onChange} 
+                                onBlur={this.handleInputValidationEmail}
+                                className={errEmail.emailError===true?"login-container-form-left-input-error" : "login-container-form-left"}
+                                />
+                                <FormError 
+                                    isHidden={errEmail.isInputValidEmail} 
+                                    errorMessage={errEmail.errorMessageEmail} />
                             <p className="login-title-from login-title-from-padding">PassWord :</p>
                                 <input minLength={6} type="password" 
                                 required name="passWord" onChange={this.onChange} 
                                 className="login-container-form-left"  
                                 placeholder="PassWord"
-                                    
+
                                 />
                             <div className="login-pass-form">
                                 <Link to="/reset-password" href="###" className="login-pass-form-a">Quên Mật Khẩu?</Link>

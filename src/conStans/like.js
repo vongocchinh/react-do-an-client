@@ -1,0 +1,1 @@
+export const LIKE_COMMENT='LIKE_COMMENT';

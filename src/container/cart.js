@@ -7,17 +7,17 @@ import * as actions from './../actions/cart';
  class cart extends Component {
     render() {
         var {cartStore}=this.props;
-       
         return (
-            <Cart
+            <div className="body-product-detail">
+                <Cart
                 showCart={this.showCart(cartStore)}
             />
+            </div>
         )
     }
     showCart=(cart)=>{
         var result='';
         result=cart.map((carts,key)=>{
-          
             return <CartItem
                 cart={carts}
                 key={key}
@@ -28,6 +28,9 @@ import * as actions from './../actions/cart';
         });
         
         return result;
+    }
+    componentDidMount(){
+        document.title="Giỏ hàng..."
     }
 }
 const mapStateToProps=(state)=>{

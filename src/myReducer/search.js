@@ -1,23 +1,33 @@
 import * as types from '../conStans/search';
+// import { getProductSearch } from './../actions/search';
 
 var initialState={
     name:'',
-    redirect:false
+    redirect:false,
+    arr:[]
 };
 
 
 var myReducer=(state=initialState,actions)=>{
     switch (actions.type){
 
-        case types.ON_SEARCH:
+        case types.Search_Product_Success:
+            var arr=JSON.parse(localStorage.getItem('search'));
             state={
-                name:actions.name,
+                arr:arr,
                 redirect:true
             }
             return state;
-        case types.SUCCESS_SEARCH:
+        case types.resetSearch:
             state={
-                name:'',
+                arr:arr,
+                redirect:false
+            }
+            return state;
+        case types.getProductSearch:
+            var arr1=JSON.parse(localStorage.getItem('search'));
+            state={
+                arr:arr1,
                 redirect:false
             }
             return state;

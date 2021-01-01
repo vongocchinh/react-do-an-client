@@ -32,25 +32,31 @@ import { Link } from 'react-router-dom';
                 <div className="container-main-nav-menu">
                     <div className="container-main">
                         <div className="menu-footer-nav">
-                       
+
                             <div className="menu-table-footer-nav">
-                                <i className="fas fa-home" />&nbsp;
-                                
-                                    <Link to="/" className="menu-icon-index">Home</Link>
-                                
+                                    <Link to="/" className="menu-icon-index menu-icon-index-home">
+                                    <i className="fas fa-home" />&nbsp;Home
+                                    </Link>
+
                             </div>
-                            
-                            <div className="menu-table-footer-nav responsive-menu-400 category-hover-menu">
-                                &nbsp;Category
+
+                            <div className="menu-table-footer-nav responsive-menu-400 ">
+                                &nbsp;
+                                <span className="category-hover-menu">Category
                                 {this.category()}
+                                </span>
+
                             </div>
-                            <div className="menu-table-footer-nav responsive-menu-400">&nbsp;Contact</div>
                             <div className="menu-table-footer-nav responsive-menu-400">&nbsp;
                                 <Link to="/user" className="menu-icon-index">
                                     Myaccount
                                 </Link>
                             </div>
-                            
+                            <div className="menu-table-footer-nav responsive-menu-400">&nbsp;
+                                <Link to="/contact" className="menu-icon-index">
+                                    Contact
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>

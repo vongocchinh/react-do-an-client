@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
  class productSearch extends Component {
+
     render() {
         return (
             <>
-            
              <div>
              <br/>
-                <div className="container-main1">
+                {/* <div className="container-main1">
                     <div className="search-container-top-list">
                         <a href="###" className="button-search-top-items">Iphone</a>
                         <a href="###" className="button-search-top-items">Oppo</a>
@@ -15,7 +15,7 @@ import React, { Component } from 'react'
                         <a href="###" className="button-search-top-items">Realme</a>
                         <a href="###" className="button-search-top-items">Vsmart</a>
                     </div>
-                </div>
+                </div> */}
                 <div className="container-main1">
                     <div className="container-product">
                         <div className="product-item-search-top">
@@ -24,7 +24,7 @@ import React, { Component } from 'react'
                                 <option>Name Z-A</option>
                             </select>
                         </div>
-                       {this.props.showSearch}
+                       {this.props.search}
                     </div>
                 </div>
                 <br/>

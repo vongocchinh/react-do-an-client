@@ -4,9 +4,9 @@ import {BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 import Routers from './router/routers';
 import Header from './container/header/header';
-import Footer from './components/layout/footer';
 import Menu from './components/../container/menuNav/menu';
 import { ToastContainer } from 'react-toastify';
+import Footer from './container/footer/footer';
 class App extends Component {
     render() {
         return (
@@ -21,7 +21,7 @@ class App extends Component {
                     pauseOnFocusLoss
                     draggable
                     pauseOnHover
-                    style={{fontSize:"12px"}}
+                    style={{fontSize:"12px",borderRadius:"10px"}}
                     />
                
                 <Router>

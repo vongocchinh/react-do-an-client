@@ -5,7 +5,7 @@ class search extends Component {
     constructor(props) {
         super(props);
         this.state={
-            name:'',
+            searchName:'',
             redirectSearch:false
         }
     }
@@ -19,17 +19,17 @@ class search extends Component {
         this.setState({
             redirectSearch:true
         });
-        var {name}=this.state;
-        this.props.search(name);
+        var {searchName}=this.state;
+        this.props.search(searchName);
+        e.target.reset();
         this.setState({
-            name:''
+            searchName:''
         });
     }
     render() {
-       
         return (
             <form className="search" onSubmit={this.onSubmit}>
-                <input type="search" className="input-search" placeholder="Bạn cần tìm gì hôm nay... " onChange={this.onChange} name="name" />
+                <input  type="search" required autoComplete="on" className="input-search" placeholder="Bạn cần tìm gì hôm nay... " onChange={this.onChange} name="searchName" />
                 <input type="submit" className="submit-search" value="Tìm" />
             </form>
         )

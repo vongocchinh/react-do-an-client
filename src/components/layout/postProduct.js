@@ -19,15 +19,15 @@ import BGFooter3 from './../images/2_3.jpg';
                         <div className="introduce-category">
                             <div className="vanCh">
                                 <i className="fas fa-truck"></i>&nbsp;
-                                <h2>Miễn phí nội thành ĐN - QN</h2>
+                                <h4>Miễn phí nội thành ĐN - QN</h4>
                             </div>
                             <div className="thanhTo">
                                 <i className="fas fa-hand-holding-usd"></i>&nbsp;
-                                <h2>Thanh toán khi nhận hàng</h2>
+                                <h4>Thanh toán khi nhận hàng</h4>
                             </div>
                             <div className="doiTra">
                                 <i className="fas fa-tasks"></i>&nbsp;
-                                <h2>ĐỔI TRẢ HÀNG</h2>
+                                <h4>ĐỔI TRẢ HÀNG</h4>
                             </div>
                         </div>
                         <div className="introduce-post">

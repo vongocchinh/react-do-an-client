@@ -9,25 +9,41 @@ import { firestoreConnect } from 'react-redux-firebase';
 import Slider from './../components/layout/slider';
 import ProductAccessories from './../components/productHome/productAccessories';
 import * as action from './../actions/user';
+import * as actionViewPage from '../actions/viewPage';
  class productHome extends Component {
     render() {
-        var ProductRequest
+        var ProductRequest;
         ProductRequest=this.props.Product;
-        var {LoginRequest,SlideStore}=this.props;
-        setTimeout(() => {
-            this.props.reset_message_login();
-        }, 1000);
+        var {LoginRequest,SlideStore,Reviews}=this.props;
+        if(LoginRequest.isLoggingSuccess){
+            setTimeout(() => {
+                window.location.reload();
+                this.props.reset_message_login();
+            }, 2600);
+        }
+
         return (
            <div>
                 <Home
-                    showDataProduct={this.showDataProduct(ProductRequest)}
-                    showDataProductSale={this.showDataProductSale(ProductRequest)}
+                    showDataProduct={this.showDataProduct(ProductRequest,Reviews)}
+                    showDataProductSale={this.showDataProductSale(ProductRequest,Reviews)}
                     LoginRequest={LoginRequest}
                     showSlides={this.showSlides(SlideStore)}
-                    showProductAcceSsoRiEs={this.showProductAcceSsoRiEs(ProductRequest)}
+                    showProductAcceSsoRiEs={this.showProductAcceSsoRiEs(ProductRequest,Reviews)}
                 />
             </div>
         )
+    }
+    countReviewProduct=(dataProduct,id)=>{
+        var result=0;
+       if(dataProduct){
+        for(let i=0;i<dataProduct.length;i++){
+            if(dataProduct[i].idProduct===id){
+                result++;
+            }
+        }
+       }
+        return result;
     }
     showSlides=(slides)=>{
         var result=null;
@@ -46,7 +62,7 @@ import * as action from './../actions/user';
         }
         return result;
     }
-    showDataProduct=(Data)=>{
+    showDataProduct=(Data,review)=>{
         var result='';
         var count=0;
         if(Data){
@@ -56,6 +72,7 @@ import * as action from './../actions/user';
                 return <ProductHomeItem
                     data={data}
                     key={key}
+                    count={this.countReviewProduct(review,data.id)}
                 />
                 }
             }))
@@ -67,7 +84,7 @@ import * as action from './../actions/user';
         }
         return result;
     }
-    showDataProductSale=(DATA)=>{
+    showDataProductSale=(DATA,review)=>{
         var result='';
         var count=0;
         if(DATA){
@@ -78,6 +95,7 @@ import * as action from './../actions/user';
                     return <ProductItemSale 
                     data={data}
                     key={key}
+                    count={this.countReviewProduct(review,data.id)}
                 />
                 }
                 }
@@ -89,7 +107,7 @@ import * as action from './../actions/user';
     }
         return result;
     }
-    showProductAcceSsoRiEs=(products)=>{
+    showProductAcceSsoRiEs=(products,review)=>{
         var result=null;
         var count=0;
         if(products){
@@ -100,6 +118,7 @@ import * as action from './../actions/user';
                         return <ProductAccessories
                             product={product}
                             key={key}
+                            count={this.countReviewProduct(review,product.id)}
                              />
                     }
                 }
@@ -114,15 +133,25 @@ import * as action from './../actions/user';
     }
     componentDidMount(){
         document.title="Thế giới điện thoại thông minh.com...";
-        this.props.getUser();
+        this.props.Get_User();
+        this.counterViewPage();
     }
+    counterViewPage=()=>{
+        var counter=localStorage.getItem('viewIdPage');
+        if(counter!=='3oEjI6SIIHBdRxXI40/200'){
+            this.props.counterViewPage();
+        }
+        localStorage.setItem('viewIdPage','3oEjI6SIIHBdRxXI40/200');
 
+    }
 }
 const mapStateToProps=(state)=>{
     return{
         Product:state.getFirestore.ordered.products,
         LoginRequest:state.LoginRequest,
-        SlideStore:state.getFirestore.ordered.slides
+        SlideStore:state.getFirestore.ordered.slides,
+        Search:state.Search,
+        Reviews:state.getFirestore.ordered.reviews
     }
 }
 const dispatchToProps=(dispatch,props)=>{
@@ -130,8 +159,11 @@ const dispatchToProps=(dispatch,props)=>{
         reset_message_login:()=>{
             dispatch(action.reset_message_login());
         },
-        getUser:()=>{
-            dispatch(action.USER_GET());
+        Get_User:()=>{
+            dispatch(action.Get_User());
+        },
+        counterViewPage:()=>{
+            dispatch(actionViewPage.counterViewPage());
         }
     }
 }
@@ -143,6 +175,9 @@ firestoreConnect(own=>[
     },
     {
         collection:"slides"
+    },
+    {
+        collection:"reviews"
     }
 ]))
 (productHome);

@@ -1,6 +1,5 @@
 
 import React, { Component } from 'react'
-
 import ReviewForm from './review/reviewForm';
 // import ReviewCount from './reviewCount';
  class cart extends Component {
@@ -36,16 +35,21 @@ import ReviewForm from './review/reviewForm';
                     <div className="clear" />
                     <div className="comment-container-layout">
                         <ReviewForm 
-                            
                             addReview={this.props.addReview}
                         />
                         <hr className="hr-comment" />
                         {this.props.ReviewCount}
                         <hr className="hr-comment" />
                         <div className="comment-container-main">
+                        <p style={{marginTop:"20px"}}><strong>Reviews</strong></p>
                             {this.props.showReviews}
                             <div className="comment-product-details-row">
-                                <a href="###">Xem Tất Cả Đánh Giá</a>
+                                {this.props.showPaginationReview}
+                                {/* <div >
+                                    <span className="pagination">1</span>
+                                    <span className="pagination">1</span>
+                                    <span className="pagination">1</span>
+                                </div> */}
                             </div>
                         </div>
                     </div>

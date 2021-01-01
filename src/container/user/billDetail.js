@@ -18,7 +18,7 @@ import BillStepper from './../../components/user/userItem/billStepper';
     render() {
         var {BillStore,BillMessage,User}=this.props;
         var {id}=this.props.match.params;
-        if(User.email===undefined||User.email===''){
+        if(User.userEmail===undefined||User.userEmail===''){
             return <Redirect to="/loginPage" />
         }
         if(BillMessage.billDeleteRequest){
@@ -32,14 +32,13 @@ import BillStepper from './../../components/user/userItem/billStepper';
         }
         if(BillMessage.billDeleteSuccess){
             toast.warning('Huy Don Thanh Cong');
+            setInterval(() => {
+                 this.props.ResetMessageBill();
+            }, 1000);
             return <Redirect to='/user' />
         }
-        setInterval(() => {
-            this.props.ResetMessageBill();
-        }, 1000);
         return (
            <BillUserDetail
-          
                showBillUserDetail={this.showBill(BillStore,id)}
                showStepper={this.showStepper(BillStore,id)}
            />
@@ -50,13 +49,12 @@ import BillStepper from './../../components/user/userItem/billStepper';
         if(bills){
             result=bills.map((bill,key)=>{
                 if(bill.id===id){
-                  
                     var tinh=bill.tinh;
                     var huyen=bill.huyen;
                     var xa=bill.xa;
                     var address=bill.address;
                     var userName=bill.userName;
-                    var userMail=bill.userMail;
+                    var userMail=bill.email;
                     var phone=bill.phone;
                     var rulesBill=bill.rulesBill;
                     var billId=bill.id;
@@ -73,9 +71,7 @@ import BillStepper from './../../components/user/userItem/billStepper';
                             rulesBill={rulesBill}
                             billId={billId}
                             onDeleteBill={this.onDeleteBill}
-                           
                         />
-                    
                 }
             })
         }

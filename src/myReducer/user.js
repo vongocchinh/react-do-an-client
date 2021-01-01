@@ -4,9 +4,8 @@ import * as UserType from './../conStans/user';
 var initialState='';
 var myReducer=(state=initialState,actions)=>{
     switch(actions.type){
-        case UserType.USER_GET:
-            var UserData=JSON.parse(localStorage.getItem('user'));
-            state=UserData;
+        case UserType.GET_USER_ACCOUNT:
+            state=actions.user;
             return state;
         default: return state;
     } 

@@ -81,7 +81,7 @@ import { Button } from '@material-ui/core';
                                     <br/>
                                     <p className="login-title-from"> Nhập mã kiểm tra:</p>
                                     <div>
-                                        <input maxLength="6" type="text" style={{width:"60px",float:"left"}} placeholder="*******" required name="code" onChange={this.onChange} className="login-container-form-left" />
+                                        <input autoComplete="off" maxLength="6" type="text" style={{width:"60px",float:"left"}} placeholder="*******" required name="code" onChange={this.onChange} className="login-container-form-left" />
                                         <Button type="submit" style={{width:"200px",float:"right",marginTop:"2.5px"}}  variant="contained" color="default" className="login-form-right-submit">Xác Nhận</Button>
                                     </div>
                                 </div>

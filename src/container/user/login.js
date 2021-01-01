@@ -3,12 +3,13 @@ import Login from './../../components/login/login';
 import { connect } from 'react-redux';
 import * as actions from './../../actions/user';
 import { Redirect } from 'react-router-dom';
+import { toast } from 'react-toastify';
  class login extends Component {
    constructor(props) {
        super(props);
        this.state={
            Redirect:false,
-           displayName:''
+           idUser:''
        }
    }
     render() {
@@ -16,8 +17,11 @@ import { Redirect } from 'react-router-dom';
         if(LoginRequest.isLoggingSuccess===true){
             return <Redirect to="/" />
         }
-        if(this.state.displayName){
+        if(this.state.idUser){
             return <Redirect to="/user" />
+        }
+        if(LoginRequest.loginError){
+            toast.dark("Đăng nhập thất bại");
         }
         return (
             <Login
@@ -35,15 +39,12 @@ import { Redirect } from 'react-router-dom';
     loginForm=(login)=>{
         this.props.login(login);
     }
-    componentDidMount(){
-        this.setState({
-            LoginRequest:this.props.Logging
-        });
+    UNSAFE_componentWillUpdate(){
         var user=JSON.parse(localStorage.getItem('user'));
         if(user){
-            if(user.displayName){
+            if(user.idUser){
                 this.setState({
-                    displayName:user.displayName
+                    idUser:user.idUser
                 });
              }
         }else{

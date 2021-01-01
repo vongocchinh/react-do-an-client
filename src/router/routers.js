@@ -14,6 +14,7 @@ import Search from '../container/productSearch/product';
 import category from '../container/productBrand/product';
 import BillDetail from '../container/user/billDetail';
 import Password from './../container/password/password';
+import Contact from './../container/contact/contact';
 
 class routers extends Component {
     render() {
@@ -30,7 +31,8 @@ class routers extends Component {
                     <Route  path="/user-edit" component={UserEdit}></Route>
                     <Route  path="/success" component={Success}></Route>
                     <Route  path="/pay" component={checkout}></Route>
-                    <Route  path="/search-product/:name.html" component={Search}></Route>
+                    <Route  path="/contact" component={Contact}></Route>
+                    <Route  path="/product-search" component={Search}></Route>
                     <Route  path="/category/:name/:id" component={category}></Route>
                     <Route  path="/product-detail/:id/:to_slug.html" component={ProductDetail}></Route>
                     <Route path="/bill-detail/:name/:id.html" component={BillDetail}></Route>

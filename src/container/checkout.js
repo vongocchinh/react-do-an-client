@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import CheckOut from '../components/checkout/checkout';
 import CartPayItem from '../components/checkout/checkItem';
+
+import CheckOutForm from '../components/checkout/checkoutForm';
 import { connect } from 'react-redux';
 import * as actionCheckOut from '../actions/checkout';
 import * as actionCart from '../actions/cart';
@@ -19,32 +21,48 @@ import { firestoreConnect } from 'react-redux-firebase';
          }
      }
     render() {
-        var {cartStore,CheckOutStoreMessage,ProductStore,User}=this.props;
-        
+        var {cartStore,CheckOutStoreMessage,ProductStore,User,AddressBill}=this.props;
        if(User){
         if(User.email===undefined){
-            
         }
        }else{
           return <Redirect to="/loginPage" />
        }
         if(CheckOutStoreMessage.isCheckOutSuccess){
-            this.props.resetMessageBill();
+            setTimeout(() => {
+                this.props.resetMessageBill();
+            }, 1000);
             return <Redirect to="/success" />
         }
 
-       
         return (
             <CheckOut
-                showCartPay={this.showCartPay(cartStore)}
-                cartStore={cartStore}
-                FormatCart={this.FormatCart}
-                addBill={this.addBill}
-                isCheckOutIn={CheckOutStoreMessage.isCheckOutIn}
-                ProductStore={ProductStore}
-                CheckOutStoreMessage={CheckOutStoreMessage}
+                checkoutForm={this.checkoutForm(AddressBill,cartStore,CheckOutStoreMessage,ProductStore)}
             />
         )
+    }
+    checkoutForm=(AddressBill,cartStore,CheckOutStoreMessage,ProductStore)=>{
+        return <CheckOutForm 
+            AddressBill={AddressBill&&AddressBill}
+            showCartPay={this.showCartPay(cartStore)}
+            cartStore={cartStore}
+            FormatCart={this.FormatCart}
+            addBill={this.addBill}
+            isCheckOutIn={CheckOutStoreMessage.isCheckOutIn}
+            ProductStore={ProductStore}
+            CheckOutStoreMessage={CheckOutStoreMessage}
+            addAddressBill={this.addAddressBill}
+            getAddressBill={this.getAddressBill}
+        />
+    }
+    getAddressBill=()=>{
+        var user=JSON.parse(localStorage.getItem('user'));
+        if(user){
+            // this.props.getAddressBill(user.idUser);
+        }
+    }
+    addAddressBill=(data)=>{
+        this.props.addAddressBill(data);
     }
     FormatCart=()=>{
         this.props.FormatCart();
@@ -76,6 +94,13 @@ import { firestoreConnect } from 'react-redux-firebase';
         }
         this.props.addBill(billAdd);
     }
+    componentDidMount(){
+        document.title="Thanh toán...";
+        var user=JSON.parse(localStorage.getItem('user'));
+        if(user){
+            this.props.getAddressBill(user.idUser);
+        }
+    }
 }
 const mapStateToProps=(state)=>{
     return{
@@ -83,7 +108,8 @@ const mapStateToProps=(state)=>{
         LoginRequest:state.LoginRequest,
         CheckOutStoreMessage:state.CheckOut,
         ProductStore:state.getFirestore.ordered.products,
-        User:state.User
+        User:state.User,
+        AddressBill:state.AddressBill
     }
 }
 const dispatchToProps=(dispatch,props)=>{
@@ -96,6 +122,12 @@ const dispatchToProps=(dispatch,props)=>{
         },
         resetMessageBill:()=>{
             dispatch(actionCheckOut.resetMessageBill());
+        },
+        addAddressBill:(data)=>{
+            dispatch(actionCheckOut.addAddressBill(data));
+        },
+        getAddressBill:(id)=>{
+            dispatch(actionCheckOut.getAddressBill(id));
         }
     }
 }

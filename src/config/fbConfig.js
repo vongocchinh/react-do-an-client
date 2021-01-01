@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/database';
-
+import 'firebase/storage';
 const firebaseConfig = {
     apiKey: "AIzaSyBDc_dbCuPx0RhZIBl6TtYvxxmCwML3c2s",
     authDomain: "do-an-web-ban-hang.firebaseapp.com",
@@ -14,5 +14,7 @@ const firebaseConfig = {
     measurementId: "G-PBY8ST2Y4R"
   };
  firebase.initializeApp(firebaseConfig);
- firebase.firestore(); 
-export default firebase;
+ firebase.firestore();
+ const storage =firebase.storage();
+ var db= firebase.firestore();
+export {db ,storage,firebase as default};

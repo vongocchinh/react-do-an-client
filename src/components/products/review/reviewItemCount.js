@@ -7,7 +7,9 @@ export default class reviewItemCount extends Component {
         return (
             <div className="row">
                     <div className="review-side">
-                        <div>{keys+1} star</div>
+                        <div><span style={{fontSize:"12px",color:"#2A2D2E"}}>{keys+1}</span>&nbsp;&nbsp;&nbsp;
+                            <span className="fa fa-star checked" style={{fontSize:"18px"}}></span>
+                        </div>
                     </div>
                     <div className="review-middle">
                         <div className="review-bar-container">
@@ -15,7 +17,7 @@ export default class reviewItemCount extends Component {
                         </div>
                     </div>
                     <div className="review-side right">
-                        <div>{item}</div>
+                        <div> <span style={{fontSize:"13px",color:"#007ACC"}}>{item} Đánh Giá</span></div>
                     </div>
                 </div>
         )

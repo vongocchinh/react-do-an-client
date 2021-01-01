@@ -12,17 +12,24 @@ class commentDetail extends Component {
         this.setState({
             like:!this.state.like
         });
+
+        var {like}=this.state;
+        var likes={
+            like:like,
+            idCmt:this.props.review.id
+        }
+        this.props.onClickLike(likes);
     }
+    
     render() {
         var {review}=this.props;
         return (
-            
             <div className="comment-container-main-row">
                 <div className="comment-container-main-left">
                     <img src={"https://1.bp.blogspot.com/-A7UYXuVWb_Q/XncdHaYbcOI/AAAAAAAAZhM/hYOevjRkrJEZhcXPnfP42nL3ZMu4PvIhgCLcBGAsYHQ/s1600/Trend-Avatar-Facebook%2B%25281%2529.jpg"} alt="###" />
                 </div>
                 <div className="comment-container-main-right">
-                        <p className="comment-product-name-row"><strong>{review.name}</strong></p>
+                        <p className="comment-product-name-row" style={{fontSize:"13px"}}>{review.name}</p>
                         <div className="comment-product-comment-row">
                             <span className="comment-product-comment-row-star">
                             <StarRatings
@@ -33,7 +40,7 @@ class commentDetail extends Component {
                                 starSpacing="1px"
                                 />
                             </span>
-                            <span>
+                            <span style={{fontSize:"12px"}}>
                                 {review.message}
                             </span>
                         </div>

@@ -1,18 +1,67 @@
 import React, { Component } from 'react'
-
+// import BackToTop from "react-back-to-top-button";
 export default class footer extends Component {
+    constructor(props) {
+        super(props);
+        this.state={
+            newserletter:'',
+            backOnTop:false
+        }
+    }
+    onChange=(e)=>{
+        this.setState({
+            [e.target.name]:e.target.value
+        });
+    }
+    onSubmit=(e)=>{
+        e.preventDefault();
+        var {newserletter}=this.state;
+        this.props.newserletter(newserletter);
+        this.setState({
+            newserletter:''
+        });
+        e.target.reset();
+    }
+  
+    componentDidMount(){
+        var scrollComponent = this;
+            document.addEventListener("scroll", ()=> {
+            scrollComponent.toggleVisibility();
+            });
+    }
+    toggleVisibility=()=> {
+        if (window.pageYOffset > 300) {
+          this.setState({
+            backOnTop: true
+          });
+        } else {
+          this.setState({
+            backOnTop: false
+          });
+        }
+      }
+      scrollToTop=()=> {
+        window.scrollTo({
+          top: 0,
+          behavior:"smooth"
+        });
+      }
     render() {
+        var {backOnTop}=this.state;
         return (
             <>
                 <div className="footer-top-main">
+                {backOnTop ? <span className="back-on-top"  onClick={this.scrollToTop}>
+                     <i className='far fa-arrow-alt-circle-up' ></i>
+                </span> : '' }
                     <div className="images-footer">
                         <div className="images-footer-img">
                         <img alt="###" src="/images/banner_newsletter.png" />
                         </div>
                         <div className="newsletter">
-                        <form  >
-                            <input className="input" autoComplete="off" name="newserletter" type="text" placeholder="Nhập email của bạn ..." />
-                            <input className="sb" type="submit" defaultValue="Email" />
+                        <form  onSubmit={this.onSubmit}>
+                            <input onChange={this.onChange} className="input" autoComplete="off" name="newserletter" type="text" placeholder="Nhập email của bạn ..." />
+                            <input  className="sb" type="submit" defaultValue="Email" />
                         </form>
                         </div>
                     </div>

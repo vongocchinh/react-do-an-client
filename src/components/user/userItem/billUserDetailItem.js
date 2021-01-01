@@ -19,7 +19,7 @@ import { DialogTitle ,DialogContentText,DialogContent,DialogActions,Button} from
         this.setState({
             open:false
         });
-        if(this.props.rulesBill===false){
+        if(this.props.rulesBill < 2){
             this.props.onDeleteBill(this.props.billId);
         }else{
             alert('Don hang da duoc xac nhan.Vui long lien he nha ban hang.')
@@ -75,7 +75,7 @@ import { DialogTitle ,DialogContentText,DialogContent,DialogActions,Button} from
                 </div>
                 <div className="bill-main-footer-date">
                     <p>Ngày Giao Hàng</p>
-                    <p className="bill-address-detail">7 ngay sau khi đặt hàng</p>
+                    <p className="bill-address-detail">{rulesBill?"7 ngay sau khi đặt hàng":"Chưa xác nhận"}</p>
                 </div>
                 <div className="bill-main-footer-quantity">
                     <p>Số Lượng: {Format.totalCart(cart)} sản phẩm</p>
