@@ -122,15 +122,18 @@ select.edit-user-container-name{
         margin-top: -20px;
     }
     .user-container-main{
-        width: 98%;
+        width: 90%;
         float: left;
-        height: auto;
+        min-height: 50px;
         background-color: #EFEFEF;
         margin-bottom: 5px;
         margin-top: 5px;
         padding-top: 5px;
         padding-bottom: 5px;
         padding-left: 2%;
+        margin-left: 4%;
+        margin-right: 4%;
+        border-radius: 10px;
     }
     .user-container-main-detail .hidden{
         display: none;
@@ -141,13 +144,15 @@ select.edit-user-container-name{
     }
     .edit-user-container-name{
         border: 1px solid #DDDDDD;
-        height: 30px;
+        height: 35px;
         width: 98%;
         margin-bottom: 20px;
         outline: none;
         padding-left: 2%;
         margin-bottom: 10px;
         border-radius: 3px;
+        
+        border-radius: 7px;
     }
     select.edit-user-container-name{
         width: 100%;
@@ -173,12 +178,13 @@ select.edit-user-container-name{
     }
     .edit-user-container-name{
         border: 1px solid #DDDDDD;
-        height: 25px;
+        height: 35px;
         width: 92%;
         margin-bottom: 20px;
         outline: none;
         padding-left: 4%;
         margin-bottom: 10px;
+        border-radius: 7px;
     }
     select.edit-user-container-name{
         width: 96%;

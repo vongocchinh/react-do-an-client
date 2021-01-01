@@ -26,17 +26,19 @@ import TotalCart from '../../container/totalCart';
         this.props.logoutUser();
     }
     showLogin=(user)=>{
-        // if(user.userOnline===true){
-        //     return (<>
-        //         <a href="###" onClick={this.logoutUser} id="menu-a" className="menu-in-table">Đăng Xuất</a> <hr/>
-
-        //     </>)
-        // }
-        // if(user.userOffline){
-        //     return  (<>
-        //         <Link to="/loginPage" id="menu-a"  className="menu-in-table">Đăng Nhập</Link> <hr/>
-        //     </>)
-        // }
+        if(user){
+            if(user.idUser){
+                return (<>
+                    <a href="###" onClick={this.logoutUser} id="menu-a" className="menu-in-table">Đăng Xuất</a> <hr/>
+    
+                </>)
+            }
+        }
+        if(!user){
+            return  (<>
+                <Link to="/loginPage" id="menu-a"  className="menu-in-table">Đăng Nhập</Link> <hr/>
+            </>)
+        }
     }
     showLoginWeb=(user)=>{
         if(user){
@@ -104,19 +106,21 @@ import TotalCart from '../../container/totalCart';
                     <div className="nav-menu" id="menu">
                         <span  onClick={this.offMenu} className="off-menu">x</span>
                         <div className="menu-slide">
-                        {this.showLogin(userLocalStorage)}
+                            <Link to="/" id="menu-a" href="/" className="menu-in-table">Trang Chủ</Link>
+                            <hr />
                             <Link to="/user" id="menu-a" href="###" className="menu-in-table">Tài khoản</Link>
-                        <hr />
-                        <Link to="/" id="menu-a" href="/" className="menu-in-table">Trang Chủ</Link>
-                        <hr />
-                            <a id="menu-a" href="###" className="menu-in-table">Giới Thiệu</a>
-                        <hr />
-                            <Link to="/category/dienthoai" id="menu-a" href="###" className="menu-in-table">Sản Phẩm</Link>
-                        <hr />
-                         <a id="menu-a" href="###" className="menu-in-table">Tin Tức</a>
-                        <hr />
-                            <a id="menu-a" href="###" className="menu-in-table">Liên Hệ</a>
+                            <hr />
+                            {this.showLogin(userLocalStorage)}
+                                <a id="menu-a" href="###" className="menu-in-table">Giới Thiệu</a>
+                            <hr />
+                                <Link to="/category/dienthoai" id="menu-a" href="###" className="menu-in-table">Sản Phẩm</Link>
+                            <hr />
+                            <a id="menu-a" href="###" className="menu-in-table">Tin Tức</a>
+                            <hr />
+                                <a id="menu-a" href="###" className="menu-in-table">Liên Hệ</a>
+                            <hr />
                         </div>
+
                     </div>
                 </nav>
             </div>

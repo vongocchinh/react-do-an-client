@@ -251,7 +251,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #2A2A4D;
+    background-color: #CBCBCB;
     color: white;
     width: 0px;
     height: 1000px;
@@ -280,15 +280,16 @@
 
 a.menu-in-table {
     text-decoration: none;
-    color: white;
+    color: black;
     margin-left: 30px;
     width: 100%;
     float: left;
+    font-size: 13px;
 }
+/* .menu-slide hr {
+    border: 0.5px solid #5E5E5E
+} */
 
-.menu-slide hr {
-    border: 1px solid #201F1F
-}
 
 #menu-a {
     margin-top: 10px;
@@ -300,14 +301,14 @@ a.menu-in-table {
         display: block;
     }
     .submit-search {
-        height: 29px;
+        height: 34px;
         width: 40px;
         border-top-right-radius: 7px;
         border-bottom-right-radius: 7px;
         margin-left: -35px;
         border: none;
         outline: none;
-        background-color: #B8332C;
+        background-color: #201F1F;
         margin-top: -1px;
     }
     .container {
@@ -344,12 +345,12 @@ a.menu-in-table {
     }
     .input-search {
         width: 100%;
-        height: 90%;
+        height: 34px;
         border: none;
         outline: none;
         padding-left: 15px;
         border-radius: 7px;
-        border: 1px solid #B8332C;
+        border: 1px solid #201F1F;
     }
     .cart-repo {
         display: block;
@@ -1269,6 +1270,7 @@ footer {
         width: 102%;
         height: 30px;
         margin-top: 5px;
+        margin-left: -1px;
     }
 }
 @media screen and (max-width:600px) {
@@ -1304,11 +1306,11 @@ footer {
     .newsletter .input{
         width: 100%;
         margin-top: 5px;
-        height: 25px;
+        height: 30px;
     }
     .newsletter .sb{
         width: 103%;
-        height: 25px;
+        height: 30px;
         margin-top: 5px;
     }
 }
@@ -2035,7 +2037,7 @@ input:checked+.slider:before {
     }
     .slider-main-img{
         width: 100%;
-        height: 397px;
+        height: 347px;
         border: none;
         outline: none;
     }
@@ -2074,10 +2076,12 @@ input:checked+.slider:before {
         margin-top: 20px;
     }
     .slider-main-img{
-        width: 100%;
-        height: 110px;
+        width: 95%;
+        height: 150px;
         border: none;
         outline: none;
+        margin-left: 2%;
+        margin-right: 2%;
     }
     .slider-main-img img{
         width: 100%;

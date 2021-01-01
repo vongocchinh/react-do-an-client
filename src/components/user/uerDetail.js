@@ -46,28 +46,30 @@ export default class uerDetail extends Component {
                     </div>
                 </div>
                 <br />
+                <br /><br />
+                <div className="clear"></div>
                 <div className="main-content-table">
-                <p className="table-text"><i className="far fa-calendar-alt" /> Đơn Hàng Của Bạn</p>
-                <br/>
-                <div className="hidden-table">
-                <TableContainer component={Paper}>
-                    <Table  size="small" aria-label="a dense table">
-                        <TableHead>
-                        <TableRow>
-                            <TableCell>ID</TableCell>
-                            <TableCell align="right">Tên Người Đặt</TableCell>
-                            <TableCell align="right">Số Lượng</TableCell>
-                            <TableCell align="right">Ngày Đặt Hàng</TableCell>
-                            <TableCell align="right">Ngày Giao Hàng</TableCell>
-                            <TableCell align="right">Tình Trạng</TableCell>
-                            <TableCell align="right">Chi Tiết</TableCell>
-                        </TableRow>
-                        </TableHead>
-                        {this.props.showBill}
-                    </Table>
-                    </TableContainer>
-                    
-                </div>
+                    <p className="table-text"><i className="far fa-calendar-alt" /> Đơn Hàng Của Bạn</p>
+                    <br/>
+                    <div className="hidden-table">
+                    <TableContainer component={Paper}>
+                        <Table  size="small" aria-label="a dense table">
+                            <TableHead>
+                            <TableRow>
+                                <TableCell>ID</TableCell>
+                                <TableCell align="right">Tên Người Đặt</TableCell>
+                                <TableCell align="right">Số Lượng</TableCell>
+                                <TableCell align="right">Ngày Đặt Hàng</TableCell>
+                                <TableCell align="right">Ngày Giao Hàng</TableCell>
+                                <TableCell align="right">Tình Trạng</TableCell>
+                                <TableCell align="right">Chi Tiết</TableCell>
+                            </TableRow>
+                            </TableHead>
+                            {this.props.showBill}
+                        </Table>
+                        </TableContainer>
+                        
+                    </div>
                 </div>
             </div>
             <div className="clear"></div>

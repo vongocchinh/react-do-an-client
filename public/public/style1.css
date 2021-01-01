@@ -288,21 +288,21 @@
         float: left;
         outline: none;
         height: 45px;
-        border:1px solid #E31E12;
+        border:1px solid #888B96;
         border-radius: 5px;
         font-size: 12px;
        margin-top: 10px;
     }
     .cart-button-add{
-        background-color: #F8CDCB;
-        color: #F4837D;
+        background-color: #B6CEEC;
+        color: #888B96;
     }
     .cart-button-add:hover{
-        background-color: #E31E12;
-        color: white;
+        background-color: #888B96;
+        color: #B6CEEC;
     }
     .dol-button-add{
-       background-color: #E31E12;
+       background-color: #888B96;
        
     }
     hr.hr-button{
@@ -498,7 +498,7 @@ td{
     border-radius: 5px;
 }
 .input-comment:focus{
-    border: 1px solid #E31E12;
+    border: 1px solid #888B96;
 }
 .comment-form  p{
     padding-top: 10px;

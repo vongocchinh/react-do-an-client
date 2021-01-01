@@ -147,7 +147,7 @@
         width: 35px;
         height: 30px;
         text-align: center;
-        border: 1px solid #0e49b5;
+        border: 1px solid #888B96;
         outline: none;
     }
     .cart-button-add-table{
@@ -155,7 +155,7 @@
         height:32px;
         outline: none;
         border: none;
-        background-color: #0e49b5;
+        background-color: #888B96;
         color: white;
         
     }
@@ -179,7 +179,7 @@
 }
 .cart-button-submit-table{
     
-    background-color: #0e49b5;
+    background-color: #888B96;
     color: white;
     outline: none;
     border:none;
@@ -211,7 +211,7 @@
         width: 25px;
         height: 20px;
         text-align: center;
-        border: 1px solid #0e49b5;
+        border: 1px solid #888B96;
         outline: none;
     }
     .cart-button-add-table{
@@ -219,7 +219,7 @@
         height:22px;
         outline: none;
         border: none;
-        background-color: #0e49b5;
+        background-color: #888B96;
         color: white;
         
     }
@@ -233,7 +233,7 @@
         width: 17px;
         height: 12px;
         text-align: center;
-        border: 1px solid #0e49b5;
+        border: 1px solid #888B96;
         outline: none;
         margin-top: 0px;
     }
@@ -242,7 +242,7 @@
         height:14px;
         outline: none;
         border: none;
-        background-color: #0e49b5;
+        background-color: #888B96;
         color: white;
         
         

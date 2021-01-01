@@ -142,7 +142,7 @@ export default class userEdit extends Component {
           </DialogContent>
         </Dialog>
         <form onSubmit={this.onSubmitImages}>
-          <div className="user-container-layout">
+          <div style={{marginTop:"20px"}} className="user-container-layout">
             <div className="user-container">
             <div className="user-container-main">
                 <div className="edit-user-container-main-detail">

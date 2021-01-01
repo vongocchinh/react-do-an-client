@@ -449,7 +449,7 @@ handleInputValidationEmail = event => {
 
         <Dialog
           open={this.state.open}
-          onClose={this.handleClose}
+          onClose={this.handleCloseSub}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
@@ -468,7 +468,7 @@ handleInputValidationEmail = event => {
         >
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              Vui lòng kiểm tra địa chỉ email.
+              Vui lòng kiểm tra địa chỉ email và phone.
             </DialogContentText>
           </DialogContent>
         </Dialog>
@@ -478,6 +478,11 @@ handleInputValidationEmail = event => {
   handleClose = () => {
     this.setState({
       openErrForm: false,
+    });
+  };
+  handleCloseSub = () => {
+    this.setState({
+      open: false,
     });
   };
 }
